@@ -27,6 +27,9 @@ def change_url():
 	resp.headers['Content-Type']='application/json'
 	return resp
 
+@app.route('/test')
+def test_url():
+	return "Ok"
 
 if __name__ == '__main__':
     app.run()

@@ -19,8 +19,8 @@ def change_url():
 	pms = json.loads(args['params'])
 	if args.has_key('svc') and args['svc'] == 'messages/load_interval':
 		print "Old: " + str(pms['timeFrom']) + " - " + str(pms['timeTo'])
-		print "New: " + str(pms['timeFrom'] + 20*3600) + " - " + str(pms['timeTo'])
-		paramsstr = paramsstr.replace("\"timeFrom\":"+str(pms['timeFrom']), "\"timeFrom\":"+str(pms['timeFrom'] + 20*3600))
+		print "New: " + str(int(pms['timeFrom']) + 20*3600) + " - " + str(pms['timeTo'])
+		paramsstr = paramsstr.replace("\"timeFrom\":"+str(pms['timeFrom']), "\"timeFrom\":"+str(int(pms['timeFrom']) + 20*3600))
 	q = SUPPLIER_URL + paramsstr
 	res = requests.get(q).text
 	resp = Response(res)
